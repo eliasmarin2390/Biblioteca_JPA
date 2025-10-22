@@ -1,9 +1,11 @@
 package services.dao;
 
+
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
-import util.JPAConexion;
 import services.interfaces.ICRUD;
+import util.JPAConexion;
+
 import java.util.List;
 
 public class MyDao implements ICRUD {
@@ -70,12 +72,12 @@ public class MyDao implements ICRUD {
     @Override
     public <T> T findById(Integer id, Class<T> clazz) {
         EntityManager em = JPAConexion.getEntityManager();
-        try {
+        try{
             T entity = em.find(clazz, id);
             return entity;
-        } catch (Exception ex) {
+        }catch(Exception ex){
             ex.printStackTrace();
-        } finally {
+        }finally{
             em.close();
         }
         return null;
